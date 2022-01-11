@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>racipe</title>
+    <link rel="stylesheet" href="style/index.css">
+  </head>
+
+  <style>
+
+  </style>
+  <body>
+   <div>
+     <div id="container_nav"></div>
+   </div>
+ <div class="food_title">  <h2>Today Special</h2></div>
+   <div id="food_container">
+    
+   </div>
+  
+  </body>
+</html>
+<script type="module">
+  import navbar from "./component/navbar.js";
+
+  //console.log(navbar)
+  var container=document.getElementById("container_nav");
+  container.innerHTML=navbar();
+  
+  
+</script>
+<script>
+ search()
+  async function search()
+  {
+   
+    var res=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`);
+
+    var data=await res.json();
+    
+    appendFood(data.meals)
+  }
+  // append data
+
+  function appendFood(data)
+  {
+    console.log(data);
+    document.getElementById("food_container").innerHTML=""
+    data.map(({strMealThumb,idMeal,strMeal})=>
+    {
+      console.log(strMealThumb,idMeal,strMeal)
+      var mainDiv=document.createElement("div");
+
+      var img=document.createElement("img");
+      img.setAttribute("src",strMealThumb);
+     var id=document.createElement("h5");
+     id.textContent="Id "+idMeal;
+
+      var name=document.createElement("h4");
+      name.textContent="Food "+strMeal;
+      var price=document.createElement("h5");
+      var ran =Math.floor(Math.random() *100)+1
+      price.textContent="Price "+ran+"Rs"
+      
+
+     mainDiv.append(img,id,name,price)
+      document.getElementById("food_container").append(mainDiv)
+
+    })
+  }
+  //debounce function
+ 
+</script>
+

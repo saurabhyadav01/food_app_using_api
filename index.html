@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style/index.css">
+  </head>
+
+  <style>
+
+  </style>
+  <div>
+   <div id="container_nav">
+
+   </div>
+   
+   <div id="search_food">
+    <h1>Welcome To My Restro</h1>
+     <input oninput="debounce(search)" type="text" id="search_btn" placeholder="Search food here">
+   </div>
+  </div>
+   <h2>ALL FOOD</h2>
+   <div id="food_container">
+     
+   </div>
+  </body>
+</html>
+<script type="module">
+  import navbar from "./component/navbar.js";
+
+  //console.log(navbar)
+  var container=document.getElementById("container_nav");
+  container.innerHTML=navbar();
+</script>
+
+<script src="script/index.js">
+
+</script>
